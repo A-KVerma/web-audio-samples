@@ -25,15 +25,15 @@
   <body>
     <div class="container was-page-wrap"></div>
     <script type="module">
-      // import WorkletDemoBuilder from '../../assets/WorkletDemoBuilder.js'
-      // import PageData from './PageData.js';
+      import WorkletDemoBuilder from '../../assets/WorkletDemoBuilder.js'
+      import PageData from './PageData.js';
 
       const demoCode = async (context) => {
         await context.audioWorklet.addModule('bypass-processor.js');
-        // const oscillator = new OscillatorNode(context);
-        // const bypasser = new AudioWorkletNode(context, 'bypass-processor');
-        // oscillator.connect(bypasser).connect(context.destination);
-        // oscillator.start();
+        const oscillator = new OscillatorNode(context);
+        const bypasser = new AudioWorkletNode(context, 'bypass-processor');
+        oscillator.connect(bypasser).connect(context.destination);
+        oscillator.start();
       };
 
       // WorkletDemoBuilder(PageData, demoCode);
